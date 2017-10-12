@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, Input} from '@angular/core';
 
 @Component({
-  selector: 'app-dynamsoft-container',
+  selector: 'sb-dynamsoft-container',
   templateUrl: './container.component.html',
   styleUrls: ['./container.component.scss']
 })
