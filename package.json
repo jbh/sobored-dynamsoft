@@ -1,0 +1,38 @@
+{
+  "name": "@sobored/dynamsoft",
+  "version": "0.0.2",
+  "description": "An Angular module for Dynamsoft",
+  "main": "index.ts",
+  "dependencies": {
+    "@angular/animations": "^4.4.4",
+    "@angular/cdk": "^2.0.0-beta.12",
+    "@angular/common": "^4.2.4",
+    "@angular/compiler": "^4.2.4",
+    "@angular/core": "^4.2.4",
+    "@angular/forms": "^4.2.4",
+    "@angular/http": "^4.2.4",
+    "@angular/material": "^2.0.0-beta.12",
+    "@angular/platform-browser": "^4.2.4",
+    "@angular/platform-browser-dynamic": "^4.2.4",
+    "@angular/router": "^4.2.4",
+    "@types/dwt": "^13.1.0",
+    "core-js": "^2.4.1",
+    "dwt": "^13.1.0",
+    "rxjs": "^5.4.2",
+    "zone.js": "^0.8.14"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jbh/sobored-dynamsoft.git"
+  },
+  "author": {
+    "name": "Josh Hall",
+    "email": "josh@sobo.red",
+    "url": "http://sobo.red"
+  },
+  "license": "MIT"
+}
