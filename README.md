@@ -28,5 +28,5 @@ export class AppModule { }
 
 #### Current Components
 
-- [ContainerComponent](container/README.md)
-- [ScanButtonComponent](scan-button/README.md)
+- [ContainerComponent](container)
+- [ScanButtonComponent](scan-button)
