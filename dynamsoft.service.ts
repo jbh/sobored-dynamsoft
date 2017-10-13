@@ -5,10 +5,12 @@ import { DynamsoftServiceConfig } from './dynamsoft-service-config.model';
 export class DynamsoftService {
 
   dynamsoft_key: string;
+  container: string;
 
   constructor(@Optional() config: DynamsoftServiceConfig) {
     if (config) {
       this.dynamsoft_key = config.dynamsoft_key;
+      this.container = config.container ? config.container : 'dwtcontrolContainer';
     }
   }
 
