@@ -1,5 +1,7 @@
 import {AfterViewInit, Component, Input} from '@angular/core';
 
+import { DynamsoftService } from '../dynamsoft.service';
+
 @Component({
   selector: 'sb-dynamsoft-container',
   templateUrl: './container.component.html',
@@ -7,9 +9,13 @@ import {AfterViewInit, Component, Input} from '@angular/core';
 })
 export class ContainerComponent implements AfterViewInit {
 
-  @Input() container: string;
+  container: string;
   @Input() width: string | number;
   @Input() height: string | number;
+
+  constructor(private dynamsoftService: DynamsoftService) {
+    this.container = dynamsoftService.container;
+  }
 
   ngAfterViewInit() {
     if (this.width && this.height) {
