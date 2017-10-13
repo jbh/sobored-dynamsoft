@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ContainerComponent } from './container/container.component';
 import { ScanButtonComponent } from './scan-button/scan-button.component';
 
+import { MatButtonModule } from '@angular/material';
+
 import { DynamsoftService } from './dynamsoft.service';
 import { DynamsoftServiceConfig } from './dynamsoft-service-config.model';
 
@@ -10,7 +12,8 @@ const components = [ContainerComponent, ScanButtonComponent];
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    MatButtonModule
   ],
   exports: [components],
   declarations: [components],
