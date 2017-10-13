@@ -7,7 +7,6 @@ export class DynamsoftService {
   dynamsoft_key: string;
 
   constructor(@Optional() config: DynamsoftServiceConfig) {
-    console.log(config);
     if (config) {
       this.dynamsoft_key = config.dynamsoft_key;
     }
@@ -15,7 +14,6 @@ export class DynamsoftService {
 
   acquireImage() {
     const dwObject = Dynamsoft.WebTwainEnv.GetWebTwain('dwtcontrolContainer');
-    console.log(this.dynamsoft_key);
     dwObject.ProductKey = this.dynamsoft_key;
     
     const bSelected = dwObject.SelectSource();
