@@ -1,6 +1,6 @@
 {
   "name": "@sobored/dynamsoft",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "An Angular module for Dynamsoft",
   "main": "index.ts",
   "dependencies": {
