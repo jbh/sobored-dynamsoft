@@ -12,6 +12,14 @@ export class DynamsoftService {
       this.dynamsoft_key = config.dynamsoft_key;
       this.container = config.container ? config.container : 'dwtcontrolContainer';
     }
+
+    Dynamsoft.WebTwainEnv.RegisterEvent('OnWebTwainReady', () => {
+      const dwObject = Dynamsoft.WebTwainEnv.GetWebTwain(this.container);
+
+      dwObject.RegisterEvent('OnTopImageInTheViewChanged', (index) => {
+        dwObject.CurrentImageIndexInBuffer = index;
+      });
+    });
   }
 
   acquireImage() {
@@ -27,6 +35,26 @@ export class DynamsoftService {
       dwObject.OpenSource();
       dwObject.AcquireImage({}, onAcquireImageSuccess, onAcquireImageFailure);
     }
+  }
+
+  getTotalImagesInBuffer(): number {
+    const dwObject = Dynamsoft.WebTwainEnv.GetWebTwain(this.container);
+    return dwObject.HowManyImagesInBuffer;
+  }
+
+  getCurrentImageIndex(): number {
+    const dwObject = Dynamsoft.WebTwainEnv.GetWebTwain(this.container);
+    return dwObject.CurrentImageIndexInBuffer;
+  }
+
+  changeImageIndex(index: number): void {
+    const dwObject = Dynamsoft.WebTwainEnv.GetWebTwain(this.container);
+
+    if (dwObject.HowManyImagesInBuffer === 0 || index > dwObject.HowManyImagesInBuffer || index < 1) {
+      return;
+    }
+
+    dwObject.CurrentImageIndexInBuffer = index;
   }
 
 }
