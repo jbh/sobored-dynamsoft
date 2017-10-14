@@ -26,7 +26,32 @@ const dynamsoft_confg = {
 export class AppModule { }
 ```
 
-#### Current Components
+#### Example app.component.html
+
+```angular2html
+<mat-toolbar color="primary">
+  <span>Dynamsoft Angular Example</span>
+</mat-toolbar>
+
+<sb-dynamsoft-container width="100%" height="500"></sb-dynamsoft-container>
+
+<div id="DynamsoftControls">
+  <button mat-raised-button sb-dynamsoft-scan-button>Scan</button>
+
+  <button mat-raised-button sb-dynamsoft-first-page-button>First</button>
+  <button mat-raised-button sb-dynamsoft-previous-page-button>Previous</button>
+  <sb-dynamsoft-current-page></sb-dynamsoft-current-page>
+  /
+  <sb-dynamsoft-total-pages></sb-dynamsoft-total-pages>
+  <button mat-raised-button sb-dynamsoft-next-page-button>Next</button>
+  <button mat-raised-button sb-dynamsoft-last-page-button>Last</button>
+</div>
+```
+
+#### Documentation
 
 - [ContainerComponent](container)
-- [ScanButtonComponent](scan-button)
+- [Scanning Directives](scan-button)
+- [Pagination Directives and Components](pagination)
+
+

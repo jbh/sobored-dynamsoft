@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input} from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { DynamsoftService } from '../dynamsoft.service';
 
@@ -18,6 +18,20 @@ export class ContainerComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
+    Dynamsoft.WebTwainEnv.RegisterEvent('OnWebTwainReady', () => {
+      const dwObject = Dynamsoft.WebTwainEnv.GetWebTwain(this.container);
+      this.dynamsoftService.triggerOnWebTwainReady(dwObject);
+
+      dwObject.RegisterEvent('OnTopImageInTheViewChanged', (index) => {
+        dwObject.CurrentImageIndexInBuffer = index;
+        this.dynamsoftService.triggerOnTopImageInTheViewChanged(index);
+      });
+
+      dwObject.RegisterEvent('OnBitmapChanged', () => {
+        this.dynamsoftService.triggerOnBitmapChanged(dwObject);
+      });
+    });
+
     if (this.width && this.height) {
       const widthAsNumber = Number(this.width);
       const heightAsNumber = Number(this.height);
