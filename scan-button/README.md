@@ -1,5 +1,5 @@
-# Scan Component
+# Scan Button Directives
 
 ```angular2html
-<sb-dynamsoft-scan-button></sb-dynamsoft-scan-button>
+<button mat-raised-button sb-dynamsoft-scan-button>Scan</button> 
 ```

@@ -1,19 +1,16 @@
 import {ModuleWithProviders, NgModule, Optional, SkipSelf} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContainerComponent } from './container/container.component';
-import { ScanButtonComponent } from './scan-button/scan-button.component';
-
-import { MatButtonModule } from '@angular/material';
+import { ScanButtonDirective } from './scan-button/scan-button.directive';
 
 import { DynamsoftService } from './dynamsoft.service';
 import { DynamsoftServiceConfig } from './dynamsoft-service-config.model';
 
-const components = [ContainerComponent, ScanButtonComponent];
+const components = [ContainerComponent, ScanButtonDirective];
 
 @NgModule({
   imports: [
-    CommonModule,
-    MatButtonModule
+    CommonModule
   ],
   exports: [components],
   declarations: [components],
