@@ -2,11 +2,26 @@ import {ModuleWithProviders, NgModule, Optional, SkipSelf} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContainerComponent } from './container/container.component';
 import { ScanButtonDirective } from './scan-button/scan-button.directive';
+import { CurrentPageComponent } from './pagination/current-page.component';
+import { TotalPagesComponent } from './pagination/total-pages.component';
+import { NextPageButtonDirective } from './pagination/next-page-button.directive';
+import { PreviousPageButtonDirective } from './pagination/previous-page-button.directive';
+import { FirstPageButtonDirective } from './pagination/first-page-button.directive';
+import { LastPageButtonDirective } from './pagination/last-page-button.directive';
 
 import { DynamsoftService } from './dynamsoft.service';
 import { DynamsoftServiceConfig } from './dynamsoft-service-config.model';
 
-const components = [ContainerComponent, ScanButtonDirective];
+const components = [
+  ContainerComponent,
+  ScanButtonDirective,
+  CurrentPageComponent,
+  TotalPagesComponent,
+  NextPageButtonDirective,
+  PreviousPageButtonDirective,
+  FirstPageButtonDirective,
+  LastPageButtonDirective
+];
 
 @NgModule({
   imports: [
