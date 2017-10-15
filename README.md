@@ -53,5 +53,6 @@ export class AppModule { }
 - [ContainerComponent](container)
 - [Scanning Directives](scan-button)
 - [Pagination Directives and Components](pagination)
+- [Save Button Directives](save)
 
 

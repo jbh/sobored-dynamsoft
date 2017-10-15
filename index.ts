@@ -1,4 +1,6 @@
-import {ModuleWithProviders, NgModule, Optional, SkipSelf} from '@angular/core';
+/// <reference path="../../@types/dwt/index.d.ts" />
+
+import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContainerComponent } from './container/container.component';
 import { ScanButtonDirective } from './scan-button/scan-button.directive';
@@ -8,6 +10,8 @@ import { NextPageButtonDirective } from './pagination/next-page-button.directive
 import { PreviousPageButtonDirective } from './pagination/previous-page-button.directive';
 import { FirstPageButtonDirective } from './pagination/first-page-button.directive';
 import { LastPageButtonDirective } from './pagination/last-page-button.directive';
+import { SaveAllButtonDirective } from './save/save-all-button.directive';
+import { SaveSelectedButtonDirective } from './save/save-selected-button.directive';
 
 import { DynamsoftService } from './dynamsoft.service';
 import { DynamsoftServiceConfig } from './dynamsoft-service-config.model';
@@ -20,7 +24,9 @@ const components = [
   NextPageButtonDirective,
   PreviousPageButtonDirective,
   FirstPageButtonDirective,
-  LastPageButtonDirective
+  LastPageButtonDirective,
+  SaveAllButtonDirective,
+  SaveSelectedButtonDirective
 ];
 
 @NgModule({
