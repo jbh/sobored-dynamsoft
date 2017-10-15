@@ -1,0 +1,7 @@
+<mat-form-field>
+  <mat-select (change)="onScannerSelected(selectedScanner)" [(ngModel)]="selectedScanner"  placeholder="Scanner">
+    <mat-option *ngFor="let scanner of scanners; let i = index" [value]="i">
+      {{ scanner}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

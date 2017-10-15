@@ -2,6 +2,12 @@
 
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+import {
+  MatSelectModule
+} from '@angular/material';
+
 import { ContainerComponent } from './container/container.component';
 import { ScanButtonDirective } from './scan-button/scan-button.directive';
 import { CurrentPageComponent } from './pagination/current-page.component';
@@ -12,6 +18,7 @@ import { FirstPageButtonDirective } from './pagination/first-page-button.directi
 import { LastPageButtonDirective } from './pagination/last-page-button.directive';
 import { SaveAllButtonDirective } from './save/save-all-button.directive';
 import { SaveSelectedButtonDirective } from './save/save-selected-button.directive';
+import { ScannerSelectComponent } from './settings/scanner-select.component';
 
 import { DynamsoftService } from './dynamsoft.service';
 import { DynamsoftServiceConfig } from './dynamsoft-service-config.model';
@@ -26,12 +33,15 @@ const components = [
   FirstPageButtonDirective,
   LastPageButtonDirective,
   SaveAllButtonDirective,
-  SaveSelectedButtonDirective
+  SaveSelectedButtonDirective,
+  ScannerSelectComponent
 ];
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    MatSelectModule
   ],
   exports: [components],
   declarations: [components],

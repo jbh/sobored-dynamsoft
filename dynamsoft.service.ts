@@ -2,6 +2,8 @@ import { Inject, Injectable, Optional } from '@angular/core';
 import { DynamsoftServiceConfig } from './dynamsoft-service-config.model';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from "rxjs/Observable";
+import {isNullOrUndefined} from "util";
+import {isDefined} from "@angular/compiler/src/util";
 
 @Injectable()
 export class DynamsoftService {
@@ -16,6 +18,7 @@ export class DynamsoftService {
   public get onBitmapChanged(): Observable<any> { return this._onBitmapChanged.asObservable(); }
   dwObject;
   scanners: string[] = [];
+  selectedScanner: number;
 
   constructor(@Optional() config: DynamsoftServiceConfig) {
     if (config) {
@@ -25,9 +28,8 @@ export class DynamsoftService {
   }
 
   acquireImage(): void {
-    this.dwObject.ProductKey = this.dynamsoft_key;
-    
-    const bSelected = this.dwObject.SelectSource();
+    const scannerSelected = typeof this.selectedScanner !== 'undefined';
+    const bSelected = scannerSelected ? this.dwObject.SelectSourceByIndex(this.selectedScanner) : this.dwObject.SelectSource();
     if (bSelected) {
       const onAcquireImageSuccess = () => {
         this.dwObject.CloseSource();
@@ -91,6 +93,7 @@ export class DynamsoftService {
   triggerOnWebTwainReady(dwObject: any) {
     if (!this.dwObject) {
       this.dwObject = dwObject;
+      this.dwObject.ProductKey = this.dynamsoft_key;
     }
 
     if (this.scanners.length === 0) {
