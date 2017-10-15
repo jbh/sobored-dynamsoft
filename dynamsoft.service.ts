@@ -14,6 +14,7 @@ export class DynamsoftService {
   public get onWebTwainReady(): Observable<any> { return this._onWebTwainReady.asObservable(); }
   _onBitmapChanged = new Subject<any>();
   public get onBitmapChanged(): Observable<any> { return this._onBitmapChanged.asObservable(); }
+  dwObject;
 
   constructor(@Optional() config: DynamsoftServiceConfig) {
     if (config) {
@@ -22,39 +23,48 @@ export class DynamsoftService {
     }
   }
 
-  acquireImage() {
-    const dwObject = Dynamsoft.WebTwainEnv.GetWebTwain('dwtcontrolContainer');
-    dwObject.ProductKey = this.dynamsoft_key;
+  acquireImage(): void {
+    this.dwObject.ProductKey = this.dynamsoft_key;
     
-    const bSelected = dwObject.SelectSource();
+    const bSelected = this.dwObject.SelectSource();
     if (bSelected) {
       const onAcquireImageSuccess = () => {
-        dwObject.CloseSource();
+        this.dwObject.CloseSource();
       };
       const onAcquireImageFailure = onAcquireImageSuccess;
-      dwObject.OpenSource();
-      dwObject.AcquireImage({}, onAcquireImageSuccess, onAcquireImageFailure);
+      this.dwObject.OpenSource();
+      this.dwObject.AcquireImage({}, onAcquireImageSuccess, onAcquireImageFailure);
+    }
+  }
+
+  saveAll(type: string): void {
+    console.log(type);
+    switch (type) {
+      case 'tiff':
+        console.log(this.dwObject);
+        break;
+      case 'pdf':
+
+        break;
+      default:
+
     }
   }
 
   getTotalImagesInBuffer(): number {
-    const dwObject = Dynamsoft.WebTwainEnv.GetWebTwain(this.container);
-    return dwObject.HowManyImagesInBuffer;
+    return this.dwObject.HowManyImagesInBuffer;
   }
 
   getCurrentImageIndex(): number {
-    const dwObject = Dynamsoft.WebTwainEnv.GetWebTwain(this.container);
-    return dwObject.CurrentImageIndexInBuffer;
+    return this.dwObject.CurrentImageIndexInBuffer;
   }
 
   changeImageIndex(index: number): void {
-    const dwObject = Dynamsoft.WebTwainEnv.GetWebTwain(this.container);
-
-    if (dwObject.HowManyImagesInBuffer === 0 || index > dwObject.HowManyImagesInBuffer || index < 0) {
+    if (this.dwObject.HowManyImagesInBuffer === 0 || index > this.dwObject.HowManyImagesInBuffer || index < 0) {
       return;
     }
 
-    dwObject.CurrentImageIndexInBuffer = index;
+    this.dwObject.CurrentImageIndexInBuffer = index;
   }
 
   triggerOnTopImageInTheViewChanged(index: number) {
@@ -62,6 +72,7 @@ export class DynamsoftService {
   }
 
   triggerOnWebTwainReady(dwObject: any) {
+    this.dwObject = dwObject;
     this._onWebTwainReady.next(dwObject);
   }
 
