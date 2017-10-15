@@ -54,5 +54,6 @@ export class AppModule { }
 - [Scanning Directives](scan-button)
 - [Pagination Directives and Components](pagination)
 - [Save Button Directives](save)
+- [Settings Components](settings)
 
 
