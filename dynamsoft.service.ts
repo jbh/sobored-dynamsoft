@@ -38,16 +38,32 @@ export class DynamsoftService {
   }
 
   saveAll(type: string): void {
-    console.log(type);
+    if (this.dwObject.HowManyImagesInBuffer <= 0) {
+      return;
+    }
+
     switch (type) {
       case 'tiff':
-        console.log(this.dwObject);
+        this.dwObject.SaveAllAsMultiPageTIFF('');
         break;
       case 'pdf':
-
-        break;
       default:
+        this.dwObject.SaveAllAsPDF('');
+    }
+  }
 
+  saveSelected(type:string): void {
+    if (this.dwObject.HowManyImagesInBuffer <= 0) {
+      return;
+    }
+
+    switch (type) {
+      case 'tiff':
+        this.dwObject.SaveSelectedImagesAsMultiPageTIFF('');
+        break;
+      case 'pdf':
+      default:
+        this.dwObject.SaveSelectedImagesAsMultiPagePDF('');
     }
   }
 
