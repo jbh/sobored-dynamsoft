@@ -15,6 +15,7 @@ export class DynamsoftService {
   _onBitmapChanged = new Subject<any>();
   public get onBitmapChanged(): Observable<any> { return this._onBitmapChanged.asObservable(); }
   dwObject;
+  scanners: string[] = [];
 
   constructor(@Optional() config: DynamsoftServiceConfig) {
     if (config) {
@@ -88,7 +89,16 @@ export class DynamsoftService {
   }
 
   triggerOnWebTwainReady(dwObject: any) {
-    this.dwObject = dwObject;
+    if (!this.dwObject) {
+      this.dwObject = dwObject;
+    }
+
+    if (this.scanners.length === 0) {
+      for (let i = 0; i < this.dwObject.SourceCount; i++) {
+        this.scanners.push(this.dwObject.GetSourceNameItems(i));
+      }
+    }
+
     this._onWebTwainReady.next(dwObject);
   }
 
