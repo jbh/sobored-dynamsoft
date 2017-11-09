@@ -12,6 +12,8 @@ export class ContainerComponent implements AfterViewInit {
   container: string;
   @Input() width: string | number;
   @Input() height: string | number;
+  @Input() cols: number;
+  @Input() rows: number;
 
   constructor(private dynamsoftService: DynamsoftService) {
     this.container = dynamsoftService.container;
@@ -24,7 +26,14 @@ export class ContainerComponent implements AfterViewInit {
 
     Dynamsoft.WebTwainEnv.RegisterEvent('OnWebTwainReady', () => {
       const dwObject = Dynamsoft.WebTwainEnv.GetWebTwain(this.container);
+      const cols = this.cols > 0 || this.cols == -1 ? this.cols : 1;
+      const rows = this.rows > 0 || this.rows == -1 ? this.rows : 1;
       this.dynamsoftService.triggerOnWebTwainReady(dwObject);
+
+      console.log('cols: ' + cols);
+      console.log('rows: ' + rows);
+
+      dwObject.SetViewMode(cols, rows);
 
       dwObject.RegisterEvent('OnTopImageInTheViewChanged', (index) => {
         dwObject.CurrentImageIndexInBuffer = index;
