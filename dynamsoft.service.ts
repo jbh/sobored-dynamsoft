@@ -18,6 +18,9 @@ export class DynamsoftService {
   public get onBitmapChanged(): Observable<any> { return this._onBitmapChanged.asObservable(); }
   dwObject;
   scanners: string[] = [];
+  options = {
+    transferCount: -1
+  };
   selectedScanner: number;
 
   constructor(@Optional() config: DynamsoftServiceConfig) {
@@ -36,6 +39,7 @@ export class DynamsoftService {
       };
       const onAcquireImageFailure = onAcquireImageSuccess;
       this.dwObject.OpenSource();
+      this.dwObject.XferCount = this.options.transferCount;
       this.dwObject.AcquireImage({}, onAcquireImageSuccess, onAcquireImageFailure);
     }
   }
