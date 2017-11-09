@@ -19,7 +19,8 @@ export class DynamsoftService {
   dwObject;
   scanners: string[] = [];
   options = {
-    transferCount: -1
+    transferCount: -1,
+    excludeBlankPages: false
   };
   selectedScanner: number;
 
@@ -40,6 +41,7 @@ export class DynamsoftService {
       const onAcquireImageFailure = onAcquireImageSuccess;
       this.dwObject.OpenSource();
       this.dwObject.XferCount = this.options.transferCount;
+      this.dwObject.IfAutoDiscardBlankpages = this.options.excludeBlankPages;
       this.dwObject.AcquireImage({}, onAcquireImageSuccess, onAcquireImageFailure);
     }
   }

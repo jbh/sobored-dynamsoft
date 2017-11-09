@@ -5,10 +5,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import {
-  MatSelectModule
+  MatSelectModule,
+  MatSlideToggleModule,
+  MatCheckboxModule
 } from '@angular/material';
 
 import { ContainerComponent } from './container/container.component';
+import { ExcludePagesComponent } from './exclude-pages/exclude-pages.component';
 import { ScanButtonDirective } from './scan-button/scan-button.directive';
 import { CurrentPageComponent } from './pagination/current-page.component';
 import { TotalPagesComponent } from './pagination/total-pages.component';
@@ -25,6 +28,7 @@ import { DynamsoftServiceConfig } from './dynamsoft-service-config.model';
 
 const components = [
   ContainerComponent,
+  ExcludePagesComponent,
   ScanButtonDirective,
   CurrentPageComponent,
   TotalPagesComponent,
@@ -41,7 +45,9 @@ const components = [
   imports: [
     CommonModule,
     FormsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSlideToggleModule,
+    MatCheckboxModule
   ],
   exports: [components],
   declarations: [components],
