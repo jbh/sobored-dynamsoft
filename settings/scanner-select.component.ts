@@ -9,10 +9,11 @@ import { DynamsoftService } from '../dynamsoft.service';
 export class ScannerSelectComponent {
 
   scanners: string[];
-  selectedScanner: number;
+  selectedScanner: number = 1;
 
   constructor(private ref: ChangeDetectorRef, private dynamsoftService: DynamsoftService) {
     this.scanners = this.dynamsoftService.scanners;
+    this.dynamsoftService.selectedScanner = this.selectedScanner;
   }
 
   onScannerSelected(id: number): void {
