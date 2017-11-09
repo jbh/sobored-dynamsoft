@@ -30,9 +30,6 @@ export class ContainerComponent implements AfterViewInit {
       const rows = this.rows > 0 || this.rows == -1 ? this.rows : 1;
       this.dynamsoftService.triggerOnWebTwainReady(dwObject);
 
-      console.log('cols: ' + cols);
-      console.log('rows: ' + rows);
-
       dwObject.SetViewMode(cols, rows);
 
       dwObject.RegisterEvent('OnTopImageInTheViewChanged', (index) => {
