@@ -18,6 +18,10 @@ export class ContainerComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
+    if (!Dynamsoft.WebTwainEnv.AutoLoad) {
+      Dynamsoft.WebTwainEnv.Load();
+    }
+
     Dynamsoft.WebTwainEnv.RegisterEvent('OnWebTwainReady', () => {
       const dwObject = Dynamsoft.WebTwainEnv.GetWebTwain(this.container);
       this.dynamsoftService.triggerOnWebTwainReady(dwObject);
