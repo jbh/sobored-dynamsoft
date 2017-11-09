@@ -16,7 +16,6 @@ export class ScannerSelectComponent {
   }
 
   onScannerSelected(id: number): void {
-    console.log(id);
     this.dynamsoftService.selectedScanner = id;
   }
 
