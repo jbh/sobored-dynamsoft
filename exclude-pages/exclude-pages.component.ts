@@ -12,6 +12,7 @@ export class ExcludePagesComponent implements AfterViewInit{
   allowedInputTypes = ['checkbox', 'slideToggle'];
   @Input('input-value') inputValue: boolean = false;
   @Input('input-type') inputType: string = 'slideToggle';
+  @Input() label: string = 'Exclude Blank Pages';
 
   constructor(private dynamsoftService: DynamsoftService) { }
 

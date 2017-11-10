@@ -21,3 +21,9 @@
 ```angular2html
 <sb-dynamsoft-exclude-pages [input-value]="true"></sb-dynamsoft-exclude-pages>
 ```
+
+#### Exclude Pages Component with custom label
+
+```angular2html
+<sb-dynamsoft-exclude-pages label="Exclude Pages Custom Label"></sb-dynamsoft-exclude-pages>
+```
