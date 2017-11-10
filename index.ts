@@ -13,6 +13,7 @@ import {
 import { ContainerComponent } from './container/container.component';
 import { ExcludePagesComponent } from './exclude-pages/exclude-pages.component';
 import { AppendImageComponent } from './append-image/append-image.component'
+import { ShowUiComponent } from './show-ui/show-ui.component';
 import { ScanButtonDirective } from './scan-button/scan-button.directive';
 import { CurrentPageComponent } from './pagination/current-page.component';
 import { TotalPagesComponent } from './pagination/total-pages.component';
@@ -31,6 +32,7 @@ const components = [
   ContainerComponent,
   ExcludePagesComponent,
   AppendImageComponent,
+  ShowUiComponent,
   ScanButtonDirective,
   CurrentPageComponent,
   TotalPagesComponent,

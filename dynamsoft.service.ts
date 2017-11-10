@@ -21,7 +21,8 @@ export class DynamsoftService {
   options = {
     transferCount: -1,
     excludeBlankPages: false,
-    appendImage: true
+    appendImage: true,
+    showUi: true
   };
   selectedScanner: number;
 
@@ -36,6 +37,7 @@ export class DynamsoftService {
     const scannerSelected = typeof this.selectedScanner !== 'undefined';
 
     this.dwObject.IfAppendImage = this.options.appendImage;
+    this.dwObject.IfShowUI = this.options.showUi;
 
     const bSelected = scannerSelected ? this.dwObject.SelectSourceByIndex(this.selectedScanner) : this.dwObject.SelectSource();
     if (bSelected) {

@@ -1,0 +1,2 @@
+<mat-slide-toggle *ngIf="inputType === 'slideToggle'" [(ngModel)]="inputValue" (change)="onInputChanged()">{{ label }}</mat-slide-toggle>
+<mat-checkbox *ngIf="inputType === 'checkbox'" [(ngModel)]="inputValue" (change)="onInputChanged()">{{ label }}</mat-checkbox>
