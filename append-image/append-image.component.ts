@@ -12,6 +12,7 @@ export class AppendImageComponent implements AfterViewInit{
   allowedInputTypes = ['checkbox', 'slideToggle'];
   @Input('input-value') inputValue: boolean = true;
   @Input('input-type') inputType: string = 'slideToggle';
+  @Input() label: string = 'Append Image';
 
   constructor(private dynamsoftService: DynamsoftService) { }
 
