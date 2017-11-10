@@ -9,14 +9,13 @@ import { DynamsoftService } from '../dynamsoft.service';
 })
 export class AppendImageComponent implements AfterViewInit{
 
-  allowedInputTypes = ['checkbox', 'slideToggle']
-  @Input('input-value') inputValue: boolean = false;
+  allowedInputTypes = ['checkbox', 'slideToggle'];
+  @Input('input-value') inputValue: boolean = true;
   @Input('input-type') inputType: string = 'slideToggle';
 
   constructor(private dynamsoftService: DynamsoftService) { }
 
   onInputChanged(): void {
-    console.log(this.inputValue);
     this.dynamsoftService.options.appendImage = this.inputValue;
   }
 

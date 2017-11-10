@@ -19,5 +19,5 @@
 #### Append Image Component with default value
 
 ```angular2html
-<sb-dynamsoft-append-image [input-value]="true"></sb-dynamsoft-append-image>
+<sb-dynamsoft-append-image [input-value]="false"></sb-dynamsoft-append-image>
 ```
