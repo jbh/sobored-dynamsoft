@@ -20,7 +20,8 @@ export class DynamsoftService {
   scanners: string[] = [];
   options = {
     transferCount: -1,
-    excludeBlankPages: false
+    excludeBlankPages: false,
+    appendImage: true
   };
   selectedScanner: number;
 
@@ -33,6 +34,9 @@ export class DynamsoftService {
 
   acquireImage(): void {
     const scannerSelected = typeof this.selectedScanner !== 'undefined';
+
+    this.dwObject.IfAppendImage = this.options.appendImage;
+
     const bSelected = scannerSelected ? this.dwObject.SelectSourceByIndex(this.selectedScanner) : this.dwObject.SelectSource();
     if (bSelected) {
       const onAcquireImageSuccess = () => {
